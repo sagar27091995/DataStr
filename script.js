@@ -111,3 +111,26 @@
 //     return -1;
 // }
 // console.log(binarySearch(arr, 11));
+
+//MergeSort
+
+function MergeSort(left_side,right_side){
+    var i = 0;
+    var j = 0;
+    var result = [];
+
+    while (i < left_side.length || j < right_side.length){
+        if (i === left_side.length){
+            result.push(right_side[j]);
+            j++;
+        }else if (j === right_side.length || left_side[i] <= right_side[j]){
+            result.push(left_side[i]);
+            i++;   
+        }else{
+            result.push(left_side[j]);
+            j++;
+        }
+    }
+    return result;
+}
+console.log(MergeSort([1,3,4], [5,3,2]));

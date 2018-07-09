@@ -114,23 +114,53 @@
 
 //MergeSort
 
-function MergeSort(left_side,right_side){
-    var i = 0;
-    var j = 0;
-    var result = [];
+// function MergeSort(left_side,right_side){
+//     var i = 0;
+//     var j = 0;
+//     var result = [];
 
-    while (i < left_side.length || j < right_side.length){
-        if (i === left_side.length){
-            result.push(right_side[j]);
-            j++;
-        }else if (j === right_side.length || left_side[i] <= right_side[j]){
-            result.push(left_side[i]);
-            i++;   
-        }else{
-            result.push(left_side[j]);
-            j++;
-        }
-    }
-    return result;
+//     while (i < left_side.length || j < right_side.length){
+//         if (i === left_side.length){
+//             result.push(right_side[j]);
+//             j++;
+//         }else if (j === right_side.length || left_side[i] <= right_side[j]){
+//             result.push(left_side[i]);
+//             i++;   
+//         }else{
+//             result.push(left_side[j]);
+//             j++;
+//         }
+//     }
+//     return result;
+// }
+// console.log(MergeSort([1,3,4], [5,3,2]));
+
+
+//Quick Sort
+
+var myArray = [3, 0, 2, 5, -1, 4, 1 ];
+
+function quick_Sort(myArray) {
+	if (myArray.length <= 1) { 
+		return myArray;
+	} else {
+
+		var left = [];
+		var right = [];
+		var newArray = [];
+		var pivot = myArrays;
+		var length = myArray.length;
+
+		for (var i = 0; i < length; i++) {
+			if (myArray[i] <= pivot) {
+				left.push(myArray[i]);
+			} else {
+				right.push(myArray[i]);
+			}
+		}
+
+		return newArray.concat(quick_Sort(left), pivot, quick_Sort(right));
+	}
 }
-console.log(MergeSort([1,3,4], [5,3,2]));
+
+console.log(quick_Sort(myArray));

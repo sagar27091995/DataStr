@@ -1,22 +1,22 @@
 //bubbleSort
 // ascending
-// var array = [1,3,2,4,6,5];
-//  function bubbleSort(array){
-//      var swap;
-//      do{
-//          swap=false;
-//          for(var i=0; i<array.length; i++){
-//              if(array[i]>array[i+1]){
-//                  var temp = array[i];
-//                  array[i] = array[i+1];
-//                  array[i+1] = temp;
-//                  swap = true;
-//              }
-//          }
-//      }while(swap);
-//  }
-//  bubbleSort(array);
-//  console.log(array)
+ function bubbleSort(array){
+	var a = performance.now();
+     var swap;
+     do{
+         swap=false;
+         for(var i=0; i<array.length; i++){
+             if(array[i]>array[i+1]){
+                 var temp = array[i];
+                 array[i] = array[i+1];
+                 array[i+1] = temp;
+                 swap = true;
+             }
+         }
+	 }while(swap);
+	 var b = performance.now();
+     console.log('bubble sort took ' + (b - a) + ' ms.');
+ }
 
 //  descending
 // var array = [1,3,2,4,6,5];
@@ -38,45 +38,105 @@
 // console.log(array);
 
 //selectionSort
-// var array = [72, 54, 59, 30, 31, 78, 2, 77, 82, 72];
+function selectionSort(array){
+	//this loop shifs tht max data to last loop
+	var a = performance.now();
+	for (var i = array.length - 1; i > 0; i--) {
+		var num = 0;
+		//this loop finds the max data  
+		for (var j = 1; j <= i; j++) {
+			if (array[j] > array[num])
+				num = j;
+		}
+		//swap
+		array[i] = b;
+		array[num] = a;
+	}
+	var b = performance.now();
+	console.log('selection sort took ' + (b - a) + ' ms.');
+	}
 
-// function swap(a, b) {
-//     array[i] = b;
-//     array[num] = a;
-// }
-// //this loop shifs tht max data to last loop
-// for (var i = array.length - 1; i > 0; i--) {
-//     var num = 0;
-//     //this loop finds the max data  
-//     for (var j = 1; j <= i; j++) {
-//         if (array[j] > array[num])
-//             num = j;
-//     }
-//     swap(array[i], array[num])
-// }
-// console.log(array);
 
 //Inserstion sort
-// var array = [1,5,10,2,4,6,8,3,7];
 
-// function InserstionSort(){
-// for(var i=1; i<array.length; i++){
-//     for(var j=0;j < i; j++){
-//         if (array[i] < array[j]){
-//             var temp = array.splice(i, 1);
-//             array.splice(j,0,temp[0]);
-//         }
-//     }
-// }
-// return array;
-// }
-// InserstionSort();
-// console.log(array);
+function InserstionSort(array){
+var a = performance.now();
+for(var i=1; i<array.length; i++){
+    for(var j=0;j < i; j++){
+        if (array[i] < array[j]){
+            var temp = array.splice(i, 1);
+            array.splice(j,0,temp[0]);
+        }
+	}
+
+}
+var b = performance.now()
+console.log('InserstionSort took ' + (b - a) + ' ms.');
+return array;
+}
+
+
+//MergeSort
+
+function MergeSort(left_side,right_side){
+var a = performance.now();
+    var i = 0;
+    var j = 0;
+    var result = [];
+
+    while (i < left_side.length || j < right_side.length){
+        if (i === left_side.length){
+            result.push(right_side[j]);
+            j++;
+        }else if (j === right_side.length || left_side[i] <= right_side[j]){
+            result.push(left_side[i]);
+            i++;   
+        }else{
+            result.push(left_side[j]);
+            j++;
+        }
+	}
+	var b = performance.now();
+	console.log('MergeSort took ' + (b - a) + ' ms.');
+	return result;
+}
+
+//Quick Sort
+
+function quick_Sort(MyArray) {
+	var n1 = new Date().getTime();
+	console.log(n1);
+	var left = [];
+	var right = [];
+	var newArray = [];
+	var pivot = MyArray.pop();
+	var output;
+	if (MyArray.length <= 1) { 
+		output = MyArray;
+	} else {
+
+		for (var i = 0; i < MyArray. length; i++) {
+			if (MyArray[i] <= pivot) {
+				left.push(MyArray[i]);
+			} else {
+				right.push(MyArray[i]);
+			}
+		}
+		output = newArray.concat(quick_Sort(left), pivot, quick_Sort(right));
+	}
+	var n2 = new Date().getTime();
+	console.log(n2);
+    var output = n2 - n1;
+	return output;
+}
+
+
 
 //-------------------------Searching Algorithms------------------------
 
 // Sequential Search
 // function seqSearch(arr, result) {
+	
 //     for (var i = 0; i < names.length; ++i) {
 //     if (names[i] == result) {
 //     return true;
@@ -112,55 +172,15 @@
 // }
 // console.log(binarySearch(arr, 11));
 
-//MergeSort
-
-// function MergeSort(left_side,right_side){
-//     var i = 0;
-//     var j = 0;
-//     var result = [];
-
-//     while (i < left_side.length || j < right_side.length){
-//         if (i === left_side.length){
-//             result.push(right_side[j]);
-//             j++;
-//         }else if (j === right_side.length || left_side[i] <= right_side[j]){
-//             result.push(left_side[i]);
-//             i++;   
-//         }else{
-//             result.push(left_side[j]);
-//             j++;
-//         }
-//     }
-//     return result;
-// }
-// console.log(MergeSort([1,3,4], [5,3,2]));
 
 
-//Quick Sort
 
-var myArray = [3, 0, 2, 5, -1, 4, 1 ];
 
-function quick_Sort(myArray) {
-	if (myArray.length <= 1) { 
-		return myArray;
-	} else {
 
-		var left = [];
-		var right = [];
-		var newArray = [];
-		var pivot = myArrays;
-		var length = myArray.length;
 
-		for (var i = 0; i < length; i++) {
-			if (myArray[i] <= pivot) {
-				left.push(myArray[i]);
-			} else {
-				right.push(myArray[i]);
-			}
-		}
 
-		return newArray.concat(quick_Sort(left), pivot, quick_Sort(right));
-	}
-}
-
-console.log(quick_Sort(myArray));
+bubbleSort([1,0,4,4,1,0,6,4,6,3,4,3,12,46,45,234,09,67]);
+selectionSort([4,6,0,1,3,5,56,643,3,1]);
+MergeSort([1,3,4], [5,3,2]);
+InserstionSort([4,6,0,1,3,5,56,643,3,1])
+quick_Sort([4,2,7,1,9,4,2,7,1,9,4,2,7,1,9])

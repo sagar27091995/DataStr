@@ -1,16 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+<head>
+    <title>Data structure</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
 <body>
 
-<h2>Data structure</h2>
+    <div class="container">
+        <h2>Data structure</h2>
+        <form>
+            <input id="arr"class="form-control" type="text" placeholder="Enter UnSorted Array in comma seperation" /><br>
+            <input type="button"class="btn btn-primary" value="Submit" onclick="insert()" />
+        </form>
+        <div id="display"></div>
+        <br>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th> Sorted-Arrays</th>
+                    <th>Time-Taken</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <p id="sortedArray_bubbleSort"></p>
+                    </td>
+                    <td>
+                        <p id="bubbleSort"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p id="sortedArray_selectionSort"></p>
+                    </td>
+                    <td>
+                        <p id="selectionSort"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p id="sortedArray_InserstionSort"></p>
+                    </td>
+                    <td>
+                        <p id="InserstionSort"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p id="sortedArray_qSort"></p>
+                    </td>
+                    <td>
+                        <p id="qSort"></p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-<!-- <p id="demo"></p>
-
-<ul id="performance-tracker"></ul> -->
-
-<script src="script.js"></script>
-
-
-
+    <script src="script.js"></script>
 </body>
+
 </html>

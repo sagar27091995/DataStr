@@ -1,9 +1,33 @@
-var arr = [2,1,5,4,3]
+var arr  = [];
 
+var arrInput  = document.getElementById("arr");
+
+var messageBox  = document.getElementById("display");
+
+function insert ( ) {
+  if(arrInput.value.length > 0){
+	arr = arr.concat( arrInput.value.split(',') );
+  }
+  arr = arr.map(i => parseInt(i));
+  console.log(arr);
+  clearAndShow();
+}
+
+function clearAndShow () {
+  // Clear our fields
+  arrInput.value = "";
+
+  // Show our output
+  messageBox.innerHTML = "";
+  
+  messageBox.innerHTML += "UnSorted Array: " + arr + "<br/>";
+
+  triggerSorts();
+}
 //bubbleSort
 // ascending
 
-function bubbleSort(arr)
+function bubbleSort(arr) //pcb
 {
 	var a = performance.now();
     var swapped;
@@ -20,8 +44,10 @@ function bubbleSort(arr)
         }
 	} while (swapped);
 	var b = performance.now()
-	console.log('bubbleSort took ' + (b - a) + ' ms.');
 	console.log(arr);
+	document.getElementById("bubbleSort").innerHTML = ('bubbleSort took ' +(b *1e+6) + ' ns.');
+	document.getElementById("sortedArray_bubbleSort").innerHTML =('Sorted-Array of bubbleSort '  + (arr));
+	// pcb('bubbleSort took ' + (b * 1e+6) + ' ns.');
 }
 
 //  descending
@@ -57,8 +83,11 @@ for(i=1;i<arr.length;i++){
 	}
 }
 var b = performance.now()
-console.log('selectionSort took ' + (b - a) + ' ms.');
+console.log('selectionSort took ' + (b * 1e+6) + ' ns.');
 console.log(arr);
+document.getElementById("selectionSort").innerHTML = ('selectionSort took ' + (b * 1e+6) + ' ns.');
+document.getElementById("sortedArray_selectionSort").innerHTML =('Sorted-Array of selectionSort '  + (arr));
+
 }
 
 //Inserstion sort
@@ -75,8 +104,10 @@ for(var i=1; i<arr.length; i++){
 
 }
 var b = performance.now()
-console.log('InserstionSort took ' + (b - a) + ' ms.');
+console.log('InserstionSort took ' + (b * 1e+6) + ' ns.');
 console.log(arr);
+document.getElementById("InserstionSort").innerHTML = ('InserstionSort took ' + (b * 1e+6) + ' ns.');
+document.getElementById("sortedArray_InserstionSort").innerHTML =('Sorted-Array of InserstionSort '  + (arr));
 
 return arr;
 }
@@ -110,10 +141,9 @@ function mergeSort (arr) {
 		indexRight++
 	  }
 	}
-  
 	return result.concat(left.slice(indexLeft)).concat(right.slice(indexRight));
   }
-  
+  console.log(list);
   var list = [2, 5, 1, 3, 7, 2, 3, 8, 6, 3]
   console.log( "mergeSort" + mergeSort(list) ) // [ 1, 2, 2, 3, 3, 3, 5, 6, 7, 8 ]
 
@@ -140,13 +170,16 @@ function qSort(arr){
 	// console.log(right);
 	// return;
 	var b = performance.now();
-	console.log('qSort took ' + (b - a) + ' ms.');
+	console.log('qSort took ' + (b * 1e+6) + ' ns.');
 	console.log(arr);
+	document.getElementById("qSort").innerHTML = ('qSort took ' + (b * 1e+6) + ' ns.');
+	document.getElementById("sortedArray_qSort").innerHTML =('Sorted-Array of qSort '  + (arr));
+
 	return qSort(left).concat(pivot,qSort(right));
 }
 
 
-//-------------------------Searching Algorithms------------------------
+//-------------------------Searching Algorithns------------------------
 
 // Sequential Search
 // function seqSearch(arr, result) {
@@ -189,10 +222,16 @@ function qSort(arr){
 
 
 
+// var performace = function(per){
+// 	console.log('CAll back function' + per);
+// };
 
+  
 
+function triggerSorts(){
+	bubbleSort(arr);
+	selectionSort(arr);
+	InserstionSort(arr)
+	qSort(arr);
+}
 
-bubbleSort(arr);
-selectionSort(arr);
-InserstionSort(arr)
-qSort(arr);
